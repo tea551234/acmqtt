@@ -6,7 +6,8 @@ log_file="/home/moxa/killmqtt.log"
 # echo $mqttPid
 # echo $mqttMEM
 # echo $mqtt
-if awk "BEGIN{if($mqttMEM > 5){exit 0}else{exit 1}}"
+
+if awk "BEGIN{if($mqttMEM > 5){exit 0}else{exit 1}}" #awk exit "0=T" "1=F" 
 then
     echo $(date "+%F %T") "," 'mqttMEM > 5% kill mqtt' >> "$log_file"
     kill -9 $mqttPid
